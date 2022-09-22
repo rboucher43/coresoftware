@@ -142,7 +142,7 @@ int MakeActsGeometry::InitRun(PHCompositeNode *topNode)
   trackingGeometry.magField = m_magneticField;
   trackingGeometry.calibContext = m_calibContext;
   trackingGeometry.magFieldContext = m_magFieldContext;
-  trackingGeometry.geoContext = m_geoCtxt;
+  trackingGeometry.getGeoContext() = m_geoCtxt;  // set reference 
   trackingGeometry.tpcSurfStepPhi = m_surfStepPhi;
   trackingGeometry.tpcSurfStepZ = m_surfStepZ;
 
