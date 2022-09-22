@@ -117,7 +117,7 @@ void setTPCParams(double tpcDevs[6])
 
   std::default_random_engine generator;
 
-  bool localVerbosity = false;
+  int localVerbosity = 0;
 
   Acts::Transform3 makeTransform(Surface surf, Eigen::Vector3d millepedeTranslation, Eigen::Vector3d sensorAngles);
 
