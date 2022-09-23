@@ -125,37 +125,18 @@ void AlignmentTransformation::createMap(PHCompositeNode* topNode)
              surf                        = surfMaps.getTpcSurface(hitsetkey,subsurfkey);
 	     Acts::Transform3 transform  = makeTransform(surf, millepedeTranslation, sensorAngles);
              Acts::GeometryIdentifier id = surf->geometryId();
-<<<<<<< HEAD
 
-	     if(localVerbosity) 
-	       {
-		 std::cout << " Add transform for TPC with surface GeometryIdentifier " << id << " trkrid " << trkrId << std::endl;
-	       }
-=======
 	     if(localVerbosity > 0) 
 	       {  std::cout << " Add transform for TPC with surface GeometryIdentifier " << id << " trkrid " << trkrId << " sensor id " << id.sensitive() << std::endl;}
->>>>>>> 78d365742e1df0f36c6e70cc128e1bf4b602a26d
 
 	     transformMap->addTransform(id,transform);
 	   }
        }
      else if(trkrId == TrkrDefs::micromegasId)
        {
-<<<<<<< HEAD
 	 if(perturbMM)
 	   {
 	     generateRandomPerturbations(mmAngleDev,mmTransDev);
-=======
-         surf = surfMaps.getSiliconSurface(hitsetkey);
-	 Acts::Transform3 transform = makeTransform(surf, millepedeTranslation, sensorAngles);
-         Acts::GeometryIdentifier id = surf->geometryId();
-
-	 if(localVerbosity > 0) 
-	   std::cout << " Add transform for Silicon with surface GeometryIdentifier " << id << " trkrid " << trkrId << " sensor id  " << id.sensitive() << std::endl;
-	 if(localVerbosity > 2)
-	   std::cout << " Transform is: " << transform.matrix() << std::endl;
->>>>>>> 78d365742e1df0f36c6e70cc128e1bf4b602a26d
-
 	     sensorAngles         = sensorAngles + perturbationAngles;
 	     millepedeTranslation = millepedeTranslation + perturbationTranslation;
 	   }
@@ -163,42 +144,28 @@ void AlignmentTransformation::createMap(PHCompositeNode* topNode)
 	 Acts::Transform3 transform  = makeTransform(surf, millepedeTranslation, sensorAngles);
 	 Acts::GeometryIdentifier id = surf->geometryId();
 
-<<<<<<< HEAD
-	 if(localVerbosity)
-	   { 
-	     std::cout << " Add transform for Micromegas with surface GeometryIdentifier " << id << " trkrid " << trkrId << std::endl;
-	   }
-=======
 	 if(localVerbosity > 0) 
+	   {
 	   std::cout << " Add transform for Micromegas with surface GeometryIdentifier " << id << " trkrid " << trkrId << " sensor id " << id.sensitive() << std::endl;
->>>>>>> 78d365742e1df0f36c6e70cc128e1bf4b602a26d
-
+	   }
 	 transformMap->addTransform(id,transform);
        }
      else
        {
 	 std::cout<< "Error: Invalid Hitsetkey" << std::endl;
        }
-<<<<<<< HEAD
-=======
      if(localVerbosity > 1)
        {
 	 std::cout << i << " " <<hitsetkey << " " <<alpha<< " " <<beta<< " " <<gamma<< " " <<dx<< " " <<dy<< " " <<dz << std::endl;
        }
->>>>>>> 78d365742e1df0f36c6e70cc128e1bf4b602a26d
    } 
 
  // copy map into geoContext
  m_tGeometry->geometry().geoContext =  transformMap->getMap();
-<<<<<<< HEAD
- 
-=======
 
->>>>>>> 78d365742e1df0f36c6e70cc128e1bf4b602a26d
  // map is created, now we can use the transforms
  alignmentTransformationContainer::use_alignment = true;
 
- 
 }
 
 Eigen::Matrix3d AlignmentTransformation::rotateToGlobal(Surface surf)
